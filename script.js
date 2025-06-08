@@ -8,6 +8,27 @@ function random(min, max) {
 }
 
 /**
+ * @param {string} txt
+*/
+function addCodeBlocks(txt) {
+  let out = "";
+  let aposCount = 0;
+  for (let i = 0; i < txt.length; i++) {
+    if (txt.charAt(i) == "`") {
+      if (aposCount != 0 && aposCount % 2 != 0) {
+        out += "</span>";
+      } else {
+        out += '<span class="codeblock">';
+      }
+      aposCount++;
+    } else {
+      out += txt.charAt(i);
+    }
+  }
+  return out;
+}
+
+/**
  * @typedef {Object} ArgumentQuestion
  * @property {string} question
  * @property {string[]} arguments
@@ -43,10 +64,9 @@ function random(min, max) {
     qBlock.querySelector(".answer").classList.remove("incorrect", "correct");
     qBlock.querySelector(".description").style.display = "none";
     
-    console.log(questions[qID].questions.length);
     argBlock
       .querySelector(".question")
-      .textContent = questions[qID].questions.length == 0 ? "" : questions[qID]?.arguments[argID]?.question + "?";
+      .textContent = questions[qID].arguments.length == 0 ? "Brak pytania" : questions[qID]?.arguments[argID]?.question + "?";
     argBlock.querySelector(".answer").classList.remove("incorrect", "correct");
     argBlock.querySelector(".description").style.display = "none";
   });
@@ -59,17 +79,16 @@ function random(min, max) {
     }
     const qID = parseInt(dataIdx.substring(0, dataIdx.indexOf("|")));
     const argID = parseInt(dataIdx.substring(dataIdx.indexOf("|") + 1));
-    console.log(argID);
     
     if (qBlock.querySelector(".answer").value.trim() == questions[qID].command) {
       qBlock.querySelector(".answer").classList.add("correct");
     } else {
       qBlock.querySelector(".answer").classList.add("incorrect");
     }
-    qBlock.querySelector(".description").textContent = questions[qID].description;
-    qBlock.querySelector(".description").style.display = "flex";
+    qBlock.querySelector(".description").innerHTML = addCodeBlocks(questions[qID].description);
+    qBlock.querySelector(".description").style.display = "block";
     
-    if (questions[qID].questions.length > 0) {
+    if (questions[qID].arguments.length > 0) {
       if (
         questions[qID].arguments[argID].arguments
           .filter(s => !s.startsWith("$"))
@@ -79,8 +98,8 @@ function random(min, max) {
       } else {
         argBlock.querySelector(".answer").classList.add("incorrect");
       }
-      argBlock.querySelector(".description").textContent = questions[qID]?.arguments[argID]?.description;
-      argBlock.querySelector(".description").style.display = "flex";
+      argBlock.querySelector(".description").innerHTML = addCodeBlocks(questions[qID].arguments[argID].description);
+      argBlock.querySelector(".description").style.display = "block";
     } else {
       argBlock.querySelector(".question").textContent = "Brak pytania";
     }

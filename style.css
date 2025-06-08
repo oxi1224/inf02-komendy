@@ -76,3 +76,9 @@ button {
 button:hover {
   background-color: #357ae8;
 }
+
+.codeblock {
+  border: 1.5px solid #ccc;
+  padding: 0.5px 0;
+  /* background-color: #ccc; */
+}

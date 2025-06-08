@@ -4,27 +4,27 @@
       "Jak uzyskać szczegółową specyfikację sprzętową komputera w systemie Linux"
     ],
     "command": "lshw",
-    "description": "Wyświetla szczegółowe informacje o sprzęcie: procesorze, pamięci RAM, kartach sieciowych, dyskach, BIOS-ie itd. Przykład: `sudo lshw -short` pokazuje skrócone zestawienie sprzętu. Użycie `sudo` jest wymagane do pełnego dostępu.",
+    "description": "Komenda `lshw` służy do wyświetlania szczegółowych informacji o sprzęcie komputera, takich jak procesor, pamięć RAM, karty sieciowe, dyski i BIOS. Aby uzyskać pełne dane, należy uruchomić ją z uprawnieniami administratora (np. `sudo lshw`).",
     "arguments": [
       {
         "question": "Jak uzyskać skrócone informacje o sprzęcie",
         "arguments": ["-short", "lshw -short"],
-        "description": "Wyświetla tabelaryczne, skrócone informacje o komponentach komputera"
+        "description": "Użyj `lshw -short` aby wyświetlić skrócone, tabelaryczne zestawienie sprzętu — szybki przegląd komponentów."
       },
       {
         "question": "Jak uzyskać informacje o karcie graficznej",
         "arguments": ["-C display", "lshw -C display"],
-        "description": "Wyświetla szczegóły dotyczące karty graficznej (np. producent, model, pamięć)"
+        "description": "Wykonaj `lshw -C display` aby zobaczyć szczegółowe informacje o karcie graficznej, takie jak producent, model i pamięć."
       },
       {
         "question": "Jak uzyskać informacje o pamięci RAM",
         "arguments": ["-C memory", "lshw -C memory"],
-        "description": "Wyświetla szczegółowe dane o zainstalowanej pamięci RAM (pojemność, typ, taktowanie)"
+        "description": "Komenda `lshw -C memory` pokaże dane dotyczące pamięci RAM, w tym pojemność, typ i taktowanie."
       },
       {
         "question": "Jak uzyskać informacje o procesorze",
         "arguments": ["-C cpu", "lshw -C cpu"],
-        "description": "Wyświetla dane o CPU (model, liczba rdzeni, taktowanie)"
+        "description": "Polecenie `lshw -C cpu` wyświetla informacje o procesorze: model, liczbę rdzeni i taktowanie."
       }
     ]
   },
@@ -33,12 +33,12 @@
       "Jak sprawdzić nazwę i wersję dystrybucji systemu Linux"
     ],
     "command": "cat",
-    "description": "Wyświetla zawartość pliku tekstowego. Przykład: `cat /home/user/tekst.txt` pokazuje tekst zawarty w pliku tekst.txt",
+    "description": "Komenda `cat` wyświetla zawartość pliku tekstowego. Aby sprawdzić nazwę i wersję dystrybucji Linux, użyj `cat /etc/os-release`, który zawiera szczegółowe informacje o systemie.",
     "arguments": [
       {
         "question": "Jak wyświetlić informacje o dystrybucji (za pomocą cat)",
         "arguments": ["cat /etc/os-release", "/etc/os-release"],
-        "description": "Zawiera dane takie jak nazwa dystrybucji, wersja, ID i inne szczegóły."
+        "description": "Użyj `cat /etc/os-release` aby odczytać nazwę i wersję dystrybucji Linux z odpowiedniego pliku systemowego."
       }
     ]
   },
@@ -46,8 +46,8 @@
     "questions": [
       "Jak sprawdzić konfigurację interfejsów sieciowych"
     ],
-    "command": "ip",
-    "description": "Polecenie do zarządzania konfiguracją sieci. Przykład: `ip a` wyświetla wszystkie interfejsy i ich przypisane adresy IP.",
+    "command": "ip a",
+    "description": "Polecenie `ip a` wyświetla konfigurację wszystkich interfejsów sieciowych wraz z przypisanymi adresami IP, co pozwala sprawdzić ich stan i ustawienia.",
     "arguments": []
   },
   {
@@ -55,12 +55,12 @@
       "Jak zmienić właściciela pliku lub katalogu"
     ],
     "command": "chown",
-    "description": "Zmienia właściciela i grupę pliku lub katalogu. Przykład: `sudo chown janek:admin plik.txt` przypisuje użytkownika `janek` i grupę `admin`. W systemach Linux dostęp do tej komendy wymaga zwykle uprawnień administratora.",
+    "description": "Komenda `chown` zmienia właściciela i grupę pliku lub katalogu. Na przykład `sudo chown janek:admin plik.txt` ustawia użytkownika `janek` i grupę `admin` jako właścicieli pliku.",
     "arguments": [
       {
         "question": "Jak rekurencyjnie zmienić właściciela dla katalogu i jego zawartości",
         "arguments": ["-R", "chown -R"],
-        "description": "Zmienia właściciela dla katalogu i wszystkich jego podkatalogów oraz plików"
+        "description": "Aby zmienić właściciela katalogu i wszystkich jego podkatalogów oraz plików, użyj `chown -R` z uprawnieniami administratora."
       }
     ]
   },
@@ -69,12 +69,12 @@
       "Jak dodać użytkownika do grupy"
     ],
     "command": "usermod",
-    "description": "Modyfikuje konto użytkownika. Przykład: `sudo usermod -aG sudo janek` dodaje użytkownika `janek` do grupy `sudo`.",
+    "description": "Komenda `usermod` modyfikuje konto użytkownika. Aby dodać użytkownika do grupy bez usuwania go z innych, użyj `sudo usermod -aG grupa użytkownik`.",
     "arguments": [
       {
         "question": "Jak dodać użytkownika do grupy bez usuwania go z innych",
         "arguments": ["-aG", "usermod -aG"],
-        "description": "Dodaje użytkownika do wskazanej grupy zachowując pozostałe przynależności grupowe"
+        "description": "Parametr `-aG` w komendzie `usermod` pozwala dodać użytkownika do nowej grupy, zachowując jego dotychczasowe przynależności grupowe."
       }
     ]
   },
@@ -83,68 +83,68 @@
       "Jak utworzyć nowego użytkownika w systemie Linux"
     ],
     "command": "useradd",
-    "description": "Tworzy nowe konto użytkownika z różnymi opcjami konfiguracji. Przykład: `sudo useradd -m -d /home/jan -s /bin/bash -p \\\"MojeHaslo123\\\" -u 1500 -e 2025-12-31 jan`.",
+    "description": "Komenda `useradd` tworzy nowe konto użytkownika z możliwością konfiguracji katalogu domowego, powłoki logowania i innych parametrów. Przykład: `sudo useradd -m -d /home/jan -s /bin/bash jan` tworzy użytkownika z katalogiem domowym i powłoką bash.",
     "arguments": [
-      { "question": "Jak utworzyć konto z katalogiem domowym", "arguments": ["-m", "useradd -m"], "description": "Tworzy automatycznie katalog domowy dla użytkownika" },
-      { "question": "Jak ustawić własny katalog domowy", "arguments": ["-d", "useradd -d"], "description": "Umożliwia określenie niestandardowej ścieżki do katalogu domowego" },
-      { "question": "Jak ustawić datę wygaśnięcia konta", "arguments": ["-e", "useradd -e"], "description": "Po wskazanej dacie konto zostanie automatycznie zablokowane" },
-      { "question": "Jak ustawić powłokę logowania", "arguments": ["-s", "useradd -s"], "description": "Ustawia domyślną powłokę użytkownika (np. bash, sh, zsh)" },
-      { "question": "Jak przypisać własny UID (identyfikator) użytkownikowi", "arguments": ["-u", "useradd -u"], "description": "Pozwala przypisać unikalny numer ID użytkownika" }
+      { "question": "Jak utworzyć konto z katalogiem domowym", "arguments": ["-m", "useradd -m"], "description": "Opcja `-m` w `useradd` automatycznie tworzy katalog domowy dla nowego użytkownika." },
+      { "question": "Jak ustawić własny katalog domowy", "arguments": ["-d", "useradd -d"], "description": "Parametr `-d` pozwala wskazać niestandardową ścieżkę katalogu domowego podczas tworzenia użytkownika." },
+      { "question": "Jak ustawić datę wygaśnięcia konta", "arguments": ["-e", "useradd -e"], "description": "Dzięki `-e` można ustawić datę wygaśnięcia konta, po której użytkownik zostanie automatycznie zablokowany." },
+      { "question": "Jak ustawić powłokę logowania", "arguments": ["-s", "useradd -s"], "description": "Opcja `-s` definiuje domyślną powłokę (np. bash) dla nowo tworzonego użytkownika." },
+      { "question": "Jak przypisać własny UID (identyfikator) użytkownikowi", "arguments": ["-u", "useradd -u"], "description": "Parametr `-u` pozwala przypisać unikalny identyfikator UID dla użytkownika podczas tworzenia konta." }
     ]
   },
   {
     "questions": ["Jak ustawić lub zmienić hasło użytkownika"],
     "command": "passwd",
-    "description": "Zmienia hasło dla istniejącego użytkownika. Przykład: `sudo passwd janek` pozwala ustawić nowe hasło dla użytkownika janek.",
+    "description": "Komenda `passwd` służy do zmiany hasła użytkownika. Przykład: `sudo passwd janek` pozwala ustawić nowe hasło dla użytkownika `janek`.",
     "arguments": []
   },
   {
     "questions": ["Jak utworzyć grupę użytkowników"],
     "command": "addgroup",
-    "description": "Tworzy nową grupę użytkowników. Przykład: `sudo addgroup pracownicy` tworzy grupę o nazwie `pracownicy`.",
+    "description": "Komenda `addgroup` tworzy nową grupę użytkowników. Na przykład `sudo addgroup pracownicy` stworzy grupę o nazwie `pracownicy`.",
     "arguments": []
   },
   {
     "questions": ["Jak usunąć konto użytkownika"],
     "command": "userdel",
-    "description": "Usuwa konto użytkownika z systemu. Przykład: `sudo userdel janek` usuwa użytkownika, a `sudo userdel -r janek` również jego katalog domowy.",
+    "description": "Komenda `userdel` usuwa konto użytkownika. Aby usunąć również katalog domowy użytkownika, użyj `sudo userdel -r użytkownik`.",
     "arguments": [
-      { "question": "Jak usunąć użytkownika wraz z jego katalogiem domowym", "arguments": ["-r", "userdel -r"], "description": "Usuwa katalog domowy i pliki użytkownika wraz z kontem" }
+      { "question": "Jak usunąć użytkownika wraz z jego katalogiem domowym", "arguments": ["-r", "userdel -r"], "description": "Parametr `-r` w `userdel` powoduje usunięcie katalogu domowego i plików użytkownika wraz z kontem." }
     ]
   },
   {
     "questions": ["Jak usunąć grupę użytkowników"],
     "command": "groupdel",
-    "description": "Usuwa grupę użytkowników z systemu. Przykład: `sudo groupdel pracownicy` usuwa grupę `pracownicy`.",
+    "description": "Komenda `groupdel` usuwa grupę użytkowników z systemu. Przykład: `sudo groupdel pracownicy` usunie grupę o tej nazwie.",
     "arguments": []
   },
   {
     "questions": ["Jak skopiować plik lub katalog"],
     "command": "cp",
-    "description": "Służy do kopiowania plików i katalogów. Przykład: `cp plik.txt kopia.txt` lub `cp -r katalog katalog_kopia`.",
+    "description": "Polecenie `cp` kopiuje pliki i katalogi. Aby skopiować katalog wraz z zawartością, użyj `cp -r katalog katalog_kopia`.",
     "arguments": [
-      { "question": "Jak skopiować katalog wraz z zawartością", "arguments": ["-r", "cp -r"], "description": "Pozwala kopiować katalogi i ich zawartość rekurencyjnie" }
+      { "question": "Jak skopiować katalog wraz z zawartością", "arguments": ["-r", "cp -r"], "description": "Parametr `-r` w `cp` pozwala rekurencyjnie kopiować katalogi i ich zawartość." }
     ]
   },
   {
     "questions": ["Jak przenieść plik lub katalog"],
     "command": "mv",
-    "description": "Służy do przenoszenia lub zmiany nazwy pliku/katalogu. Przykład: `mv stary.txt nowy.txt`.",
+    "description": "Komenda `mv` służy do przenoszenia lub zmiany nazwy plików i katalogów. Przykład: `mv stary.txt nowy.txt` zmienia nazwę lub lokalizację pliku.",
     "arguments": []
   },
   {
     "questions": ["Jak utworzyć katalog"],
     "command": "mkdir",
-    "description": "Tworzy nowy katalog. Przykład: `mkdir nowy_katalog`.",
+    "description": "Komenda `mkdir` tworzy nowy katalog. Przykład: `mkdir nowy_katalog` utworzy katalog o podanej nazwie.",
     "arguments": []
   },
   {
     "questions": ["Jak usunąć plik lub katalog"],
     "command": "rm",
-    "description": "Usuwa pliki lub katalogi. Przykład: `rm plik.txt`, `rm -r katalog/`, `rm -rf folder/`.",
+    "description": "Komenda `rm` usuwa pliki i katalogi. Aby usunąć katalog z całą zawartością, użyj `rm -r katalog/`. Aby wymusić usunięcie bez pytania, dodaj opcję `-f`.",
     "arguments": [
-      { "question": "Jak usunąć katalog wraz z zawartością", "arguments": ["-r", "rm -r"], "description": "Rekursyjne usuwanie katalogu" },
-      { "question": "Jak wymusić usunięcie bez pytania", "arguments": ["-f", "rm -f"], "description": "Nie pyta o potwierdzenie usuwania" }
+      { "question": "Jak usunąć katalog wraz z zawartością", "arguments": ["-r", "rm -r"], "description": "Parametr `-r` w `rm` umożliwia rekursywne usuwanie katalogów i ich zawartości." },
+      { "question": "Jak wymusić usunięcie bez pytania", "arguments": ["-f", "rm -f"], "description": "Opcja `-f` w `rm` usuwa pliki bez potwierdzenia i ignoruje błędy." }
     ]
   },
   {
@@ -152,12 +152,12 @@
       "Jak utworzyć dowiązanie symboliczne lub twarde"
     ],
     "command": "ln",
-    "description": "Tworzy dowiązania między plikami. Przykład: `ln -s /etc/plik.txt ~/link.txt` tworzy dowiązanie symboliczne. Twarde linki (bez `-s`) działają tylko wewnątrz tego samego systemu plików.",
+    "description": "Komenda `ln` tworzy dowiązania między plikami. Aby utworzyć dowiązanie symboliczne (alias), użyj `ln -s cel link`.",
     "arguments": [
       {
         "question": "Jak utworzyć dowiązanie symboliczne",
         "arguments": ["-s", "ln -s"],
-        "description": "Tworzy link symboliczny, który wskazuje na inny plik lub katalog. Umożliwia np. aliasowanie katalogów konfiguracyjnych."
+        "description": "Parametr `-s` w `ln` tworzy dowiązanie symboliczne, które wskazuje na inny plik lub katalog."
       }
     ]
   },
@@ -166,22 +166,22 @@
       "Jak zarządzać ważnością hasła użytkownika"
     ],
     "command": "chage",
-    "description": "Służy do modyfikacji polityki haseł użytkownika. Przykład: `chage -l jan` wyświetla daty dotyczące ważności hasła. Może służyć do wymuszania zmiany hasła lub jego wygaśnięcia.",
+    "description": "Komenda `chage` pozwala zarządzać ważnością hasła użytkownika. Na przykład `chage -l jan` wyświetla szczegóły dotyczące daty zmiany i wygaśnięcia hasła.",
     "arguments": [
       {
         "question": "Jak wyświetlić informacje o haśle użytkownika",
         "arguments": ["-l", "chage -l"],
-        "description": "Pokazuje datę ostatniej zmiany hasła, datę wygaśnięcia, okres ważności i inne"
+        "description": "Parametr `-l` w `chage` pokazuje datę ostatniej zmiany hasła i inne informacje o ważności."
       },
       {
         "question": "Jak wymusić zmianę hasła przy następnym logowaniu",
         "arguments": ["-d", "chage -d"],
-        "description": "Powoduje, że system wymusi zmianę hasła użytkownika za ustaloloną ilość dni"
+        "description": "Opcja `-d` w `chage` ustawia, że użytkownik musi zmienić hasło przy następnym logowaniu."
       },
       {
         "question": "Jak ustawić maksymalny czas ważności hasła",
         "arguments": ["-M", "chage -M"],
-        "description": "Określa, że użytkownik musi zmienić hasło co ustaloną ilość dni"
+        "description": "Parametr `-M` określa maksymalny okres ważności hasła, po którym użytkownik musi je zmienić."
       }
     ]
   },
@@ -190,7 +190,7 @@
       "Jak ustawić uprawnienia pliku"
     ],
     "command": "chmod",
-    "description": "Zmienia uprawnienia do plików i katalogów. System uprawnień używa trzech cyfr, np. `chmod 755 plik.sh`: 7 dla właściciela (rwx), 5 dla grupy (r-x), 5 dla innych (r-x). Cyfry to suma: 4 = read, 2 = write, 1 = execute. Przykład: 777 oznacza pełne prawa dla wszystkich.",
+    "description": "Komenda `chmod` zmienia uprawnienia plików i katalogów. Uprawnienia określa się za pomocą cyfr, np. `chmod 755 plik.sh` ustawia prawa do odczytu, zapisu i wykonania dla właściciela oraz odczyt i wykonanie dla grupy i innych.",
     "arguments": []
   },
   {
@@ -198,7 +198,8 @@
       "Jak sprawdzić stan dysku twardego SMART"
     ],
     "command": "smartctl",
-    "description": "Wyświetla dane diagnostyczne SMART urządzeń dyskowych. Przykład: `sudo smartctl -a /dev/sda`. Aby dowiedzieć się, jak nazywa się urządzenie (np. /dev/sda), można użyć `lsblk` – pokazuje wszystkie podłączone dyski i partycje.",
+    "description": "Komenda `smartctl` służy do wyświetlania danych diagnostycznych SMART dysków twardych. Przykład: `sudo smartctl -a /dev/sda` (nazwę dysku np. /dev/sda można znaleźć poprzez komendę `lsblk`) pokazuje szczegółowy raport o stanie dysku.",
     "arguments": []
   }
 ]
+
