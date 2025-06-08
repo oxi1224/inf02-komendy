@@ -1,7 +1,7 @@
 const qBlock = document.getElementById("question-general");
 const argBlock = document.getElementById("question-argument");
 const checkBtn = document.getElementById("btn-check");
-const nextQuestionBtn = document.getElementById("btn-next");
+const nextBtn = document.getElementById("btn-next");
 
 function random(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
@@ -54,7 +54,7 @@ function addCodeBlocks(txt) {
       .catch(_ => [])
   );
 
-  nextQuestionBtn.addEventListener("click", () => {
+  nextBtn.addEventListener("click", () => {
     let qID = random(0, questions.length);
     let argID = random(0, questions[qID].arguments.length);
     checkBtn.setAttribute("data_index", `${qID}|${argID}`);
@@ -104,4 +104,5 @@ function addCodeBlocks(txt) {
       argBlock.querySelector(".question").textContent = "Brak pytania";
     }
   });
+  nextBtn.click();
 })();
