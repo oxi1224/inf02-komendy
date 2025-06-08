@@ -62,12 +62,14 @@ function addCodeBlocks(txt) {
     qBlock
       .querySelector(".question").textContent = questions[qID].questions[0] + "?";
     qBlock.querySelector(".answer").classList.remove("incorrect", "correct");
+    qBlock.querySelector(".answer").value = "";
     qBlock.querySelector(".description").style.display = "none";
     
     argBlock
       .querySelector(".question")
       .textContent = questions[qID].arguments.length == 0 ? "Brak pytania" : questions[qID]?.arguments[argID]?.question + "?";
     argBlock.querySelector(".answer").classList.remove("incorrect", "correct");
+    argBlock.querySelector(".answer").value = "";
     argBlock.querySelector(".description").style.display = "none";
   });
 
