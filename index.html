@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz z komend Linux</title>
+  <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+  <div class="quiz-container">
+    <div id="question-general" class="question-block">
+      <label class="question-label">Pytanie ogólne</label>
+      <p class="question"></p>
+      <input class="answer" type="text" placeholder="Wpisz swoją odpowiedź">
+      <div class="description"></div>
+    </div>
+
+    <div id="question-argument" class="question-block">
+      <label class="question-label">Pytanie szczegółowe</label>
+      <p class="question"></p>
+      <input class="answer" type="text" placeholder="Wpisz argumenty">
+      <div class="description"></div>
+    </div>
+
+    <div class="buttons">
+      <button id="btn-check">Sprawdź odpowiedź</button>
+      <button id="btn-next">Następne pytanie</button>
+    </div>
+  </div>
+  <script src="script.js" async defer></script>
+</body>
+</html>
