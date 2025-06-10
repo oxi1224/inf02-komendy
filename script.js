@@ -70,8 +70,6 @@ function addCodeBlocks(txt) {
       .catch(err => {console.error(err); return []})
   );
 
-  console.log(questions);
-
   nextBtn.addEventListener("click", () => {
     let qID = random(0, questions.length);
     let argID = random(0, questions[qID].arguments.length);
