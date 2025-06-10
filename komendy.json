@@ -5,7 +5,7 @@
     "description": "Komenda `net user` w systemie **Windows** wyświetla listę kont użytkowników na danym komputerze. Przykład: `net user` pokaże użytkowników, a `net user nazwa` — szczegóły wybranego konta.",
     "arguments": [
       {
-        "question": "Jak zoboaczyć szczegółowe informację o argumentach lub składni komendy"
+        "question": "Jak zoboaczyć szczegółowe informację o argumentach lub składni komendy",
         "command": ["net user /help", "/help"],
         "description": "W systemie Windows `/help` dodane do każdej komendy wyświetli pomoc o niej"
       }
@@ -17,7 +17,7 @@
     "description": "Komenda `net localgroup` w systemie **Windows** pokazuje dostępne grupy lokalne. Aby zobaczyć członków konkretnej grupy, użyj `net localgroup nazwa_grupy`.",
     "arguments": [
       {
-        "question": "Jak zoboaczyć szczegółowe informację o argumentach lub składni komendy"
+        "question": "Jak zoboaczyć szczegółowe informację o argumentach lub składni komendy",
         "command": ["net localgroup /help", "/help"],
         "description": "W systemie Windows `/help` dodane do każdej komendy wyświetli pomoc o niej"
       }
@@ -29,7 +29,7 @@
     "description": "Komenda `net share` w systemie **Windows** wyświetla listę udziałów sieciowych dostępnych na komputerze oraz ich lokalizacje na dysku.",
     "arguments": [
       {
-        "question": "Jak zoboaczyć szczegółowe informację o argumentach lub składni komendy"
+        "question": "Jak zoboaczyć szczegółowe informację o argumentach lub składni komendy",
         "command": ["net share /help", "/help"],
         "description": "W systemie Windows `/help` dodane do każdej komendy wyświetli pomoc o niej"
       }

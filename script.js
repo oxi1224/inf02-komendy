@@ -65,10 +65,12 @@ function addCodeBlocks(txt) {
    * @const
   */
   const questions = Object.freeze(
-    await fetch("https://raw.githubusercontent.com/oxi1224/inf02-komendy/refs/heads/main/komendy.json")
+    await fetch("https://raw.githubusercontent.com/oxi1224/inf02-komendy/refs/heads/main/komendy.json", { cache: "no-store" })
       .then(async (res) => await res.json())
-      .catch(_ => [])
+      .catch(err => {console.error(err); return []})
   );
+
+  console.log(questions);
 
   nextBtn.addEventListener("click", () => {
     let qID = random(0, questions.length);
