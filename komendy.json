@@ -6,7 +6,7 @@
     "arguments": [
       {
         "question": "Jak zoboaczyć szczegółowe informację o argumentach lub składni komendy",
-        "command": ["net user /help", "/help"],
+        "arguments": ["net user /help", "/help"],
         "description": "W systemie Windows `/help` dodane do każdej komendy wyświetli pomoc o niej"
       }
     ]
@@ -18,7 +18,7 @@
     "arguments": [
       {
         "question": "Jak zoboaczyć szczegółowe informację o argumentach lub składni komendy",
-        "command": ["net localgroup /help", "/help"],
+        "arguments": ["net localgroup /help", "/help"],
         "description": "W systemie Windows `/help` dodane do każdej komendy wyświetli pomoc o niej"
       }
     ]
@@ -30,7 +30,7 @@
     "arguments": [
       {
         "question": "Jak zoboaczyć szczegółowe informację o argumentach lub składni komendy",
-        "command": ["net share /help", "/help"],
+        "arguments": ["net share /help", "/help"],
         "description": "W systemie Windows `/help` dodane do każdej komendy wyświetli pomoc o niej"
       }
     ]
