@@ -275,7 +275,7 @@
       "Jaka komenda w systemie Linux pozwala zobaczyć wolne oraz zajęte miejsce na dysku"
     ],
     "command": "df",
-    "description": "Komenda `df` służy do pokazywania wolnego miejsca na dysku, gdzie najpierw mamy napisaną nazwę dysku (np. /dev/sda) i obok folder i ile miejsca zajmuje, możemy zobaczyć zużycie całego dysk patrząc na fodler `/`"
+    "description": "Komenda `df` służy do pokazywania wolnego miejsca na dysku, gdzie najpierw mamy napisaną nazwę dysku (np. /dev/sda) i obok folder i ile miejsca zajmuje, możemy zobaczyć zużycie całego dysk patrząc na fodler `/`",
     "arguments": [
       {
         "question": "Jak pokazać zużycie w czytelnych dla ludzi wartościach (np. megabity, gigabity)",
