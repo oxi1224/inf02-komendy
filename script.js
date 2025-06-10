@@ -1,10 +1,26 @@
 const qBlock = document.getElementById("question-general");
+const qBlockAnswer = qBlock.querySelector(".answer");
+const qBlockDescription = qBlock.querySelector(".description");
+
 const argBlock = document.getElementById("question-argument");
+const argBlockAnswer = argBlock.querySelector(".answer");
+const argBlockDescription = argBlock.querySelector(".description");
+
 const checkBtn = document.getElementById("btn-check");
 const nextBtn = document.getElementById("btn-next");
 
 function random(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
+}
+
+/**
+ * @param {Element} parent
+ * @param {string} querySelector
+ * @param {function(Element): any} callback
+ * @returns any
+*/
+function executeFor(parent, querySelector, callback) {
+  return callback(parent.querySelector(querySelector))
 }
 
 /**
@@ -61,16 +77,20 @@ function addCodeBlocks(txt) {
     
     qBlock
       .querySelector(".question").textContent = questions[qID].questions[0] + "?";
-    qBlock.querySelector(".answer").classList.remove("incorrect", "correct");
-    qBlock.querySelector(".answer").value = "";
-    qBlock.querySelector(".description").style.display = "none";
+    qBlockAnswer.classList.remove("incorrect", "correct");
+    qBlockAnswer.value = "";
+    qBlockDescription.style.display = "none";
     
-    argBlock
-      .querySelector(".question")
-      .textContent = questions[qID].arguments.length == 0 ? "Brak pytania" : questions[qID]?.arguments[argID]?.question + "?";
-    argBlock.querySelector(".answer").classList.remove("incorrect", "correct");
-    argBlock.querySelector(".answer").value = "";
-    argBlock.querySelector(".description").style.display = "none";
+    argBlockAnswer.value = "";
+    if (questions[qID].arguments.length == 0) {
+      argBlock.classList.add("inactive-block");
+      argBlock.querySelector(".question").textContent = "Brak pytania";
+    } else {
+      argBlock.classList.remove("inactive-block");
+      argBlock.querySelector(".question").textContent = questions[qID]?.arguments[argID]?.question + "?";
+      argBlockAnswer.classList.remove("incorrect", "correct");
+      argBlockDescription.style.display = "none";
+    }
   });
 
   checkBtn.addEventListener("click", () => {
@@ -82,26 +102,26 @@ function addCodeBlocks(txt) {
     const qID = parseInt(dataIdx.substring(0, dataIdx.indexOf("|")));
     const argID = parseInt(dataIdx.substring(dataIdx.indexOf("|") + 1));
     
-    if (qBlock.querySelector(".answer").value.trim() == questions[qID].command) {
-      qBlock.querySelector(".answer").classList.add("correct");
+    if (qBlockAnswer.value.trim() == questions[qID].command) {
+      qBlockAnswer.classList.add("correct");
     } else {
-      qBlock.querySelector(".answer").classList.add("incorrect");
+      qBlockAnswer.classList.add("incorrect");
     }
-    qBlock.querySelector(".description").innerHTML = addCodeBlocks(questions[qID].description);
-    qBlock.querySelector(".description").style.display = "block";
+    qBlockDescription.innerHTML = addCodeBlocks(questions[qID].description);
+    qBlockDescription.style.display = "block";
     
     if (questions[qID].arguments.length > 0) {
       if (
         questions[qID].arguments[argID].arguments
           .filter(s => !s.startsWith("$"))
-          .includes(argBlock.querySelector(".answer").value.trim())
+          .includes(argBlockAnswer.value.trim())
       ) {
-        argBlock.querySelector(".answer").classList.add("correct");
+        argBlockAnswer.classList.add("correct");
       } else {
-        argBlock.querySelector(".answer").classList.add("incorrect");
+        argBlockAnswer.classList.add("incorrect");
       }
-      argBlock.querySelector(".description").innerHTML = addCodeBlocks(questions[qID].arguments[argID].description);
-      argBlock.querySelector(".description").style.display = "block";
+      argBlockDescription.innerHTML = addCodeBlocks(questions[qID].arguments[argID].description);
+      argBlockDescription.style.display = "block";
     } else {
       argBlock.querySelector(".question").textContent = "Brak pytania";
     }

@@ -1,5 +1,74 @@
 [
   {
+    "questions": ["Jak wyświetlić listę użytkowników w systemie Windows"],
+    "command": "net user",
+    "description": "Komenda `net user` w systemie **Windows** wyświetla listę kont użytkowników na danym komputerze. Przykład: `net user` pokaże użytkowników, a `net user nazwa` — szczegóły wybranego konta.",
+    "arguments": [
+      {
+        "question": "Jak zoboaczyć szczegółowe informację o argumentach lub składni komendy"
+        "command": ["net user /help", "/help"],
+        "description": "W systemie Windows `/help` dodane do każdej komendy wyświetli pomoc o niej"
+      }
+    ]
+  },
+  {
+    "questions": ["Jak sprawdzić grupy lokalne w systemie Windows"],
+    "command": "net localgroup",
+    "description": "Komenda `net localgroup` w systemie **Windows** pokazuje dostępne grupy lokalne. Aby zobaczyć członków konkretnej grupy, użyj `net localgroup nazwa_grupy`.",
+    "arguments": [
+      {
+        "question": "Jak zoboaczyć szczegółowe informację o argumentach lub składni komendy"
+        "command": ["net localgroup /help", "/help"],
+        "description": "W systemie Windows `/help` dodane do każdej komendy wyświetli pomoc o niej"
+      }
+    ]
+  },
+  {
+    "questions": ["Jak sprawdzić udziały sieciowe na komputerze Windows"],
+    "command": "net share",
+    "description": "Komenda `net share` w systemie **Windows** wyświetla listę udziałów sieciowych dostępnych na komputerze oraz ich lokalizacje na dysku.",
+    "arguments": [
+      {
+        "question": "Jak zoboaczyć szczegółowe informację o argumentach lub składni komendy"
+        "command": ["net share /help", "/help"],
+        "description": "W systemie Windows `/help` dodane do każdej komendy wyświetli pomoc o niej"
+      }
+    ]
+  },
+  {
+    "questions": ["Jak sprawdzić konfigurację sieciową w systemie Windows"],
+    "command": "ipconfig",
+    "description": "Komenda `ipconfig` w **Windows** pokazuje konfigurację sieciową, w tym adresy IP, maskę podsieci i bramę domyślną. Dodanie `ipconfig /all` wyświetla dodatkowe szczegóły (MAC, DHCP, DNS).",
+    "arguments": [
+      {
+        "question": "Jak wyświetlić pełną konfigurację sieciową",
+        "arguments": ["/all"],
+        "description": "Opcja `/all` wyświetla wszystkie szczegóły konfiguracji sieciowej."
+      },
+      {
+        "question": "Jak zwolnić adres IP (release)",
+        "arguments": ["/release"],
+        "description": "Parametr `/release` zwalnia aktualnie przypisany adres IP."
+      },
+      {
+        "question": "Jak wyczyścić pamięć podręczną DNS",
+        "arguments": ["/flushdns"],
+        "description": "Opcja `/flushdns` czyści lokalną pamięć podręczną DNS."
+      },
+      {
+        "question": "Jak odnowić adres IP (renew)",
+        "arguments": ["/renew"],
+        "description": "Parametr `/renew` odnawia przydzielony adres IP."
+      }
+    ]
+  },
+  {
+    "questions": ["Jak sprawdzić adresy MAC kart sieciowych w systemie Windows"],
+    "command": "getmac",
+    "description": "Komenda `getmac` pokazuje adresy MAC wszystkich kart sieciowych w systemie Windows",
+    "arguments": []
+  },
+  {
     "questions": [
       "Jak uzyskać szczegółową specyfikację sprzętową komputera w systemie Linux"
     ],
@@ -190,7 +259,7 @@
       "Jak ustawić uprawnienia pliku"
     ],
     "command": "chmod",
-    "description": "Komenda `chmod` zmienia uprawnienia plików i katalogów. Uprawnienia określa się za pomocą cyfr, np. `chmod 755 plik.sh` ustawia prawa do odczytu, zapisu i wykonania dla właściciela oraz odczyt i wykonanie dla grupy i innych.",
+    "description": "Komenda `chmod` zmienia uprawnienia plików i katalogów. Uprawnienia określa się za pomocą cyfr, np. `chmod 755 plik.sh` ustawia prawa do odczytu, zapisu i wykonania dla właściciela oraz odczyt i wykonanie dla grupy i innych. Uprawnienia w linuxie, działają na podstawie maski bitowej gdzie każde uprawienie odpowiada danemu bitowi (X - 1 bit, W - 2 bit, R - 3 bit) np. uprawnienia 6 odpowiadają 110 czyli R (odczytowi) oraz W (zapisowi)",
     "arguments": []
   },
   {
@@ -200,6 +269,60 @@
     "command": "smartctl",
     "description": "Komenda `smartctl` służy do wyświetlania danych diagnostycznych SMART dysków twardych. Przykład: `sudo smartctl -a /dev/sda` (nazwę dysku np. /dev/sda można znaleźć poprzez komendę `lsblk`) pokazuje szczegółowy raport o stanie dysku.",
     "arguments": []
+  },
+  {
+    "questions": [
+      "Jaka komenda w systemie Linux pozwala zobaczyć wolne oraz zajęte miejsce na dysku"
+    ],
+    "command": "df",
+    "description": "Komenda `df` służy do pokazywania wolnego miejsca na dysku, gdzie najpierw mamy napisaną nazwę dysku (np. /dev/sda) i obok folder i ile miejsca zajmuje, możemy zobaczyć zużycie całego dysk patrząc na fodler `/`"
+    "arguments": [
+      {
+        "question": "Jak pokazać zużycie w czytelnych dla ludzi wartościach (np. megabity, gigabity)",
+        "arguments": ["df -h", "-h"],
+        "description": "Parametr `-h` pokazuje zużycie dysku w łatwo czytelncyh jednostkach" 
+      }
+    ]
+  },
+  {
+    "questions": [
+      "Jaka komenda w systemie Linux pozwala znaleźć dany plik, lub plik podążający jakimś schematem np. wszystkie pliki zaczynające się na `ssh`"
+    ],
+    "command": "find",
+    "description": "Komenda find pozwala na znalezienie danego pliku w podanej ścieżce, np. find /home/a znajdzie wszystkie pliki w ścieżce /home zaczynające się na a",
+    "arguments": [
+      {
+        "question": "Jak przeszukać wszystie podkatalogi",
+        "arguments": ["*/", "find */"],
+        "description": "Użycie komendy `find */nazwa_pliku` przeszuka wszystkie podkatalogi w aktualnej ścieżce"
+      }
+    ]
+  },
+  {
+    "questions": [
+      "Jaka komenda w systemie Linux służy do poruszania się w terminalu między folderami w systemie"
+    ],
+    "command": "cd",
+    "description": "Komenda `cd` służy do zmieniania aktualnego folderu w terminalu",
+    "arguments": [
+      {
+        "question": "Jak przejść do katalogu domowego aktualnego użytkownika",
+        "arguments": ["cd ~", "~"],
+        "description": "W systemie linux katalog domowy aktualnego użytkownika jest oznaczany poprzez symbol `~`"
+      },
+      {
+        "question": "Jak przejść do katalogu głównego dysku w systemie Linux",
+        "arguments": ["cd /", "/"],
+        "description": "W systemie linux katalog główny dysku jest oznaczany symbolem `/` (odpowiednik C: w Windows)"
+      }
+    ]
+  },
+  {
+    "questions": [
+      "Jak przekierować wynik komendy do danego pliku w systemie Linux"
+    ],
+    "command": ">",
+    "description": "Znak `>` zarówno w Linuxie jak i Windowsie pozwala przekierować wynik komendy do danego pliku (nie musi on istnieć) np. `df > uzycie_dysku`",
+    "arguments": []
   }
 ]
-
