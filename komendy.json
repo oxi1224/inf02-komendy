@@ -42,22 +42,22 @@
     "arguments": [
       {
         "question": "Jak wyświetlić pełną konfigurację sieciową",
-        "arguments": ["/all"],
+        "arguments": ["ipconfig /all", "/all"],
         "description": "Opcja `/all` wyświetla wszystkie szczegóły konfiguracji sieciowej."
       },
       {
         "question": "Jak zwolnić adres IP (release)",
-        "arguments": ["/release"],
+        "arguments": ["ipconfig /release", "/release"],
         "description": "Parametr `/release` zwalnia aktualnie przypisany adres IP."
       },
       {
         "question": "Jak wyczyścić pamięć podręczną DNS",
-        "arguments": ["/flushdns"],
+        "arguments": ["ipconfig /flushdns", "/flushdns"],
         "description": "Opcja `/flushdns` czyści lokalną pamięć podręczną DNS."
       },
       {
         "question": "Jak odnowić adres IP (renew)",
-        "arguments": ["/renew"],
+        "arguments": ["ipconfig /renew", "/renew"],
         "description": "Parametr `/renew` odnawia przydzielony adres IP."
       }
     ]
